@@ -64,11 +64,13 @@ class varnish (
   $varnish_storage_file         = '/var/lib/varnish-storage/varnish_storage.bin',
   $varnish_ttl                  = '120',
   $shmlog_dir                   = '/var/lib/varnish',
-  $shmlog_tempfs                = true,
+  $shmlog_size                  = '256M',
+  $shmlog_tempfs                = false,
   $version                      = present,
   $default_version              = 3,
   $add_repo                     = true,
   $manage_firewall              = false,
+
 ) {
 
   # read parameters
@@ -90,6 +92,7 @@ class varnish (
   if $shmlog_tempfs {
     class { 'varnish::shmlog':
       shmlog_dir => $shmlog_dir,
+      size       => $shmlog_size,
       require    => Package['varnish'],
     }
   }
