@@ -65,7 +65,7 @@ class varnish (
   $varnish_ttl                  = '120',
   $shmlog_dir                   = '/var/lib/varnish',
   $shmlog_size                  = '256M',
-  $shmlog_tempfs                = false,
+  $shmlog_tempfs                = true,
   $version                      = present,
   $default_version              = 3,
   $add_repo                     = true,
